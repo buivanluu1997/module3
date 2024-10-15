@@ -1,0 +1,1 @@
+SELECT * FROM center_codegym.student;
