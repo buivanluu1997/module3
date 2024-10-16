@@ -77,6 +77,87 @@ values ('Tran Van Chanh', '1985-3-2', 100), ('Tran Minh Chien', '1985-3-2', 200)
 
 insert into instructor_class(instructor_id, class_id) values (1, 1), (1,2),(1,3),(2,1),(2,2),(2,3);
 
+-- thực hiện truy vấn dữ liệu:
+-- 1. Lấy ra tất cả thông tin các học viên, và cho biết các học viên đang theo học lớp nào, khớp trong 2 bảng
+select student.id as student_id, student.name as student_name, 
+student.birthday, student.gender, student.email, student.point, 
+class.name as class_namejame
+from student 
+inner join class on student.class_id = class.id;
+
+-- 2. Lấy ra thông tin các học viên, và cho biết các học viên đang theo học lớp nào, tất cả các học viên cho dù chưa có lớp
+select student.*, class.name as class_name 
+from student
+left join class on student.class_id = class.id;
+
+-- 3. Lấy thông tin của các học viên tên 'nguyen minh hai'.
+select student.id as student_id, student.name as student_name, 
+student.birthday, student.gender, student.email, student.point,
+class.name as class_name
+from student 
+left join class on student.class_id = class.id
+where student.name = 'Nguyen Minh Hai';
+
+-- 4. Lấy ra học viên có họ là “nguyen”
+select student.id as student_id, student.name as student_name, 
+student.birthday, student.gender, student.email, student.point,
+class.name as class_name
+from student 
+left join class on student.class_id = class.id
+where student.name like 'Nguyen%';
+
+-- 5. Lấy thông tin của các học viên tên 'hai' hoặc 'huynh’.
+select student.id as student_id, student.name as student_name, 
+student.birthday, student.gender, student.email, student.point,
+class.name as class_name
+from student 
+left join class on student.class_id = class.id
+where student.name like '%Hai' or student.name like '%Huynh';
+
+-- 6. Lấy ra các học viên có điểm lớn hơn 5 .
+select student.id as student_id, student.name as student_name, 
+student.birthday, student.gender, student.email, student.point,
+class.name as class_name
+from student 
+left join class on student.class_id = class.id
+where student.point > 5;
+
+-- 7. lấy ra thông tin các học viên có điểm 4,6,8
+select student.id as student_id, student.name as student_name, 
+student.birthday, student.gender, student.email, student.point,
+class.name as class_name
+from student 
+left join class on student.class_id = class.id
+where student.point in (4,6,8);
+
+-- 8. Thông kế số lượng học sinh theo từng loại điểm.
+select student.point,
+count(student.point) as student_count
+from student
+group by student.point;
+
+-- 9 . Thông kế số lượng học sinh theo điểm và điểm phải lớn hơn 5
+select student.point,
+count(*) as student_count
+from student
+where student.point > 5
+group by student.point;
+
+-- 10. Thông kế số lượng học sinh theo điểm lớn hơn 5 và chỉ hiện thị với số lượng>=2
+select student.point,
+count(student.point) as student_count
+from student
+group by student.point
+having student.point > 5 and count(student.point) >= 2;
+
+-- 11. Lấy ra danh sách học viên của lớp c1121g1 và sắp xếp  học viên theo point giảm dần,
+select student.id as student_id, student.name as student_name,
+student.birthday, student.gender, student.email, student.point,
+class.name as class_name
+from student
+inner join class on student.class_id = class.id
+where class.name = 'c1121g1'
+order by student.point desc;
 
 
   
