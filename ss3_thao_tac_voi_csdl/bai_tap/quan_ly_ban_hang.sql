@@ -46,7 +46,9 @@ select c.name as customer_name, p.name as product_name
 from customer c
 inner join order1 o on c.id = o.customer_id
 inner join order_detail od on o.id = od.order_id
-inner join product p on od.product_id = p.id;
+inner join product p on od.product_id = p.id
+group by c.id, p.name;
+
 
 -- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 select c.name, o.id
