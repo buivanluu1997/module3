@@ -144,24 +144,24 @@ order by student.point desc;
 -- 1.Hiện thị danh sách các lớp có học viên theo học và số lượng học viên của mỗi lớp
 select c.name, count(s.id) as student_count
 from class c
-left join student s on c.id = s.class_id
-group by c.name;
+join student s on c.id = s.class_id
+group by c.id;
 
 -- 2. Tìm điểm lớn nhất của mỗi lớp
 select c.name, max(s.point) as max_point
 from class c
-left join student s on c.id = s.class_id
-group by c.name;
+join student s on c.id = s.class_id
+group by c.id;
 
 -- 3. Tình điểm trung bình của từng lớp
 select c.name, avg (s.point) as average_point
 from class c
-left join student s on c.id = s.class_id
-group by c.name;
+join student s on c.id = s.class_id
+group by c.id;
 
 -- 4. Lấy ra toàn bộ tên và ngày sinh các instructor và student ở CodeGym.
 select name,birthday from student
-union
+union all
 select name,birthday from instructor;
 
 -- 5. Lấy ra top 3 học viên có điểm cao nhất của trung tâm.
