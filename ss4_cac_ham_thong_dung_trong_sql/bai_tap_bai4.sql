@@ -90,7 +90,8 @@ where m.mark = (select max(m1.mark) from mark m1);
 select s.*, avg(m.mark) as avg_mark
 from student s
 join mark m on s.id = m.student_id
-group by s.id;
+group by s.id
+order by avg(m.mark) desc;
 
 
 
