@@ -51,34 +51,12 @@ dia_chi varchar(45),
 foreign key (ma_loai_khach) references loai_khach (ma_loai_khach)
 );
 
-create table hop_dong (
-ma_hop_dong int auto_increment primary key,
-ngay_lam_hop_dong datetime,
-ngay_ket_thuc datetime,
-tien_dat_coc double,
-ma_nhan_vien int,
-ma_khach_hang int,
-ma_dich_vu int,
-foreign key (ma_nhan_vien) references nhan_vien (ma_nhan_vien),
-foreign key (ma_khach_hang) references khach_hang (ma_khach_hang),
-foreign key (ma_dich_vu) references dich_vu (ma_dich_vu)
-);
-
 create table dich_vu_di_kem (
 ma_dich_vu_di_kem int auto_increment primary key,
 ten_dich_vu_di_kem varchar(45),
 gia double,
 don_vi varchar(45),
 trang_thai varchar(45)
-);
-
-create table hop_dong_chi_tiet (
-ma_hop_dong_chi_tiet int auto_increment primary key,
-ma_hop_dong int,
-ma_dich_vu_di_kem int,
-so_luong int,
-foreign key (ma_hop_dong) references hop_dong (ma_hop_dong),
-foreign key (ma_dich_vu_di_kem) references dich_vu_di_kem (ma_dich_vu_di_kem)
 );
 
 create table kieu_thue (
@@ -106,6 +84,29 @@ so_tang int,
 foreign key(ma_kieu_thue) references kieu_thue (ma_kieu_thue),
 foreign key(ma_loai_dich_vu) references loai_dich_vu (ma_loai_dich_vu)
 );
+
+create table hop_dong (
+ma_hop_dong int auto_increment primary key,
+ngay_lam_hop_dong datetime,
+ngay_ket_thuc datetime,
+tien_dat_coc double,
+ma_nhan_vien int,
+ma_khach_hang int,
+ma_dich_vu int,
+foreign key (ma_nhan_vien) references nhan_vien (ma_nhan_vien),
+foreign key (ma_khach_hang) references khach_hang (ma_khach_hang),
+foreign key (ma_dich_vu) references dich_vu (ma_dich_vu)
+);
+
+create table hop_dong_chi_tiet (
+ma_hop_dong_chi_tiet int auto_increment primary key,
+ma_hop_dong int,
+ma_dich_vu_di_kem int,
+so_luong int,
+foreign key (ma_hop_dong) references hop_dong (ma_hop_dong),
+foreign key (ma_dich_vu_di_kem) references dich_vu_di_kem (ma_dich_vu_di_kem)
+);
+
 
 insert into vi_tri(ten_vi_tri) values ('Quản Lý'), ('Nhân Viên');
 
@@ -255,9 +256,16 @@ select hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc, 
 from hop_dong hd
 left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
 left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
-group by hd.ma_hop_dong
+group by hd.ma_hop_dong;
 
+-- 20.	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Nguyễn Chí Thanh” 
+-- và đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “14/01/2021”.
+create view v_nhan_vien as
+select nv.* from nhan_vien nv
+join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
+where nv.dia_chi like '%Nguyễn Chí Thanh%' and hd.ngay_lam_hop_dong = '2021-01-14';
 
+select * from v_nhan_vien;
 
 
 
