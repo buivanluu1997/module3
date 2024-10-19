@@ -267,6 +267,6 @@ where nv.dia_chi like '%Nguyễn Chí Thanh%' and hd.ngay_lam_hop_dong = '2021-0
 
 select * from v_nhan_vien;
 
-
-
-
+-- 21.	Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “5 Hùng Vương, Huế” 
+-- đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này.
+update v_nhan_vien set dia_chi = '5 Hùng Vương, Huế' where ma_nhan_vien = 7;
