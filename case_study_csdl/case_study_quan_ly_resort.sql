@@ -252,7 +252,7 @@ order by month(hd.ngay_lam_hop_dong);
 -- 10.	Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm. 
 -- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, 
 -- so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
-select hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc, sum(hdct.so_luong)
+select hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc, sum(hdct.so_luong) as so_luong_dich_vu_di_kem
 from hop_dong hd
 left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
 left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
@@ -267,6 +267,6 @@ where nv.dia_chi like '%Nguyễn Chí Thanh%' and hd.ngay_lam_hop_dong = '2021-0
 
 select * from v_nhan_vien;
 
--- 21.	Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “5 Hùng Vương, Huế” 
+-- 21. Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “5 Hùng Vương, Huế” 
 -- đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này.
 update v_nhan_vien set dia_chi = '5 Hùng Vương, Huế' where ma_nhan_vien = 7;
