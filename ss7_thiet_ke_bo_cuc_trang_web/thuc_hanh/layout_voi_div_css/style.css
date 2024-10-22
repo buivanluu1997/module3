@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+}
+#header {
+    height: 100px;
+    width: 100%;
+    background: #508dff;
+}
+#main {
+    height: 500px;
+    width: 70%;
+    background: beige;
+    float: left;
+}
+
+#sidebar {
+    height: 500px;
+    width: 30%;
+    float: left;
+    background: #1af6f6;
+}
+#footer {
+    height: 100px;
+    width: 100%;
+    background: cadetblue;
+    clear: both;
+}
