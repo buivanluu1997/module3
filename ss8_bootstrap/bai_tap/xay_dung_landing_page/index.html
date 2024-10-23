@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng Landing Page</title>
+    <link rel="stylesheet" href="../../../bootstrap/bootstrap-5.2.3-dist/css/bootstrap.css">
+    <script src="../../../bootstrap/bootstrap-5.2.3-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body{
+            margin: 0;
+        }
+
+        .links {
+            display: none;
+        }
+
+        /* Hiển thị liên kết khi di chuột vào tiêu đề */
+        #about:hover .links {
+            display: block;
+        }
+
+        /* Tùy chỉnh thêm để đẹp hơn */
+        .links li {
+            list-style-type: circle;
+        }
+
+        .links li a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .links li a:hover {
+            text-decoration: underline;
+        }
+        .nav111{
+            margin-top: 0px;
+            background-color: #0749af;
+            height: 40px;
+            justify-content: center;
+            text-align: center;
+            padding-top: 6px;
+            color: white;
+        }
+        .main{
+            display: flex;
+            height: 900px;
+            background-color: #dce6fa;
+        }
+        #col2{
+            text-align: center;
+            padding: 50px 20px 100px 20px;
+        }
+        #h6 {
+            padding: 20px;
+            line-height: 1.8; /* Khoảng cách dòng */
+            text-align: justify; /* Canh đều đoạn văn */
+            max-width: 600px; /* Chiều rộng tối đa của đoạn văn */
+            margin: 0 auto; /* Canh giữa */
+
+        }
+        #h6 h6 {
+            font-size: 16px;
+            margin: 0; /* Bỏ margin của h6 */
+        }
+        .footer{
+            padding-top: 90px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"><i class="fab fa-microsoft"></i> Microsoft</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Windows</a>
+            </li>
+            <li class="nav-item" id="about">
+                <a class="nav-link" href="#">About Windows</a>
+                <ul class="links">
+                    <li><a href="#">Meet Windows 11</a></li>
+                    <li><a href="#">Compare Windows 10 & 11</a></li>
+                    <li><a href="#">Windows 11 security</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Get Windows</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Shop PCs</a>
+            </li>
+        </ul>
+
+        <!-- Đặt ms-auto tại đây để đẩy các mục về phía phải -->
+        <ul class="nav ms-auto">
+            <li id="search" class="nav-item">
+                <a class="nav-link" href="#"> <i class="fas fa-search"></i> Search</a>
+            </li>
+            <li id="login" class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav111"><p>
+        New experiences coming to Copilot+ PCs. Learn More>
+    </p></div>
+    <div class="main"  >
+        <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 25px; margin-right: 20px" >
+            <img src="img/img.png" alt="">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12" id="col2">
+            <div class="c-heading-1 f-lean main-heading gradient-text" style="height: 100px" >
+                <h2>More is possible with Windows 11</h2>
+            </div>
+            <div id="h6" >
+                <h6>This is the best Windows made better, with a Copilot for every person on every device. From AI-powered features to built-in security protections and state of the art creativity, it’s the Windows you know, and more.</h6>
+            </div>
+            <div id="btn">
+                <button type="button" class="btn btn-info">Check for upgrade now</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align: center">
+        <div><h3>Do what you dream with the power of AI</h3></div>
+        <div><h6>AI-powered features can be used in Windows 11. Designed to enhance your PC experience and productivity, these features make Windows 11 more intuitive and more powerful.</h6></div>
+    </div>
+</div>
+</body>
+</html>
