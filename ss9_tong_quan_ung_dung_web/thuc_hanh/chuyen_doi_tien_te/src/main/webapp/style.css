@@ -1,0 +1,10 @@
+.convert{
+    height: 200px; width: 200px;
+    margin: 0;
+    padding: 10px;
+    border: 1px black solid;
+}
+.convert input {
+    padding: 5px;
+    margin: 5px;
+}
