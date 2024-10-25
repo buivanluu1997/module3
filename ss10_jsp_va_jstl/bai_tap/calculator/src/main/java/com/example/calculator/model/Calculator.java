@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator.model;
 
 public class Calculator {
     public double calculator(double firstOperand, double secondOperand, char operator) {

@@ -1,4 +1,6 @@
-package com.example.calculator;
+package com.example.calculator.controller;
+
+import com.example.calculator.model.Calculator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "CalculatorServlet", value = "/calculator")
-public class CalculatorServlet extends HttpServlet {
+public class CalculatorController extends HttpServlet {
     private Calculator calculator = new Calculator();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
