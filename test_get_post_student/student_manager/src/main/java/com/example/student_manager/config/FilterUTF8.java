@@ -1,4 +1,4 @@
-package com.example.quan_li_user.config;
+package com.example.student_manager.config;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -6,21 +6,46 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-<div class="container mt-5">
-  <h1 class="text-center">Danh sách người dùng</h1>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Quản Lí Người Dùng</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/user?action=create">Thêm khách hàng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/user?action=search-country">Tìm kiếm quốc gia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/user?action=arrange-name">Sắp xếp theo tên</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  <p><a href="/user?action=create" class="btn btn-success">Thêm khách hàng</a></p>
-  <p><a href="/user?action=search-country" class="btn btn-success">Tìm kiếm quốc gia</a></p>
-  <p><a href="/user?action=arrange-name" class="btn btn-success">Sắp xếp theo tên</a></p>
+<div class="container mt-5">
+  <h1 class="text-center text-primary my-4 display-4">Danh sách người dùng</h1>
+
+  <div class="d-flex justify-content-around my-4">
+    <a href="/user?action=create" class="btn btn-primary">Thêm khách hàng</a>
+    <a href="/user?action=search-country" class="btn btn-info">Tìm kiếm quốc gia</a>
+    <a href="/user?action=arrange-name" class="btn btn-warning">Sắp xếp theo tên</a>
+  </div>
 
   <table class="table table-bordered">
-    <thead>
+    <thead class="table-light">
     <tr>
-      <th>Id</th>
-      <th>Tên</th>
-      <th>Email</th>
-      <th>Quốc gia</th>
-      <th>Hành động</th>
+      <th scope="col">Id</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Email</th>
+      <th scope="col">Quốc gia</th>
+      <th scope="col">Hành động</th>
     </tr>
     </thead>
     <tbody>
@@ -77,7 +102,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="hidden" name="idUser" id="idUser">
+            <input name="idUser" id="idUser">
             <span>Bạn có muốn xoá </span><span id="userName"></span><span> không?</span>
           </div>
           <div class="modal-footer">
